@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import foro.pkg2.Computador;
+import javax.swing.JDialog;
 
 /**
  *
@@ -18,9 +19,22 @@ public class RegistrarEquipos {
     List<Computador> computadores = new ArrayList<>();
     
     public void registrarEquipo(int tipo) {
-        
         String fabricante = JOptionPane.showInputDialog("Ingrese el fabricante del equipo:");
+        while(fabricante.isEmpty()) {
+            JOptionPane optionPane = new JOptionPane("Fabricante no válido", JOptionPane.ERROR_MESSAGE);    
+            JDialog dialog = optionPane.createDialog("Failure");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+            fabricante = JOptionPane.showInputDialog("Ingrese el fabricante del equipo:");
+        }
         String modelo = JOptionPane.showInputDialog("Ingrese el modelo del equipo:");
+        while(modelo.isEmpty()) {
+            JOptionPane optionPane = new JOptionPane("Modelo no válido", JOptionPane.ERROR_MESSAGE);    
+            JDialog dialog = optionPane.createDialog("Failure");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+            modelo = JOptionPane.showInputDialog("Ingrese el modelo del equipo:");
+        }
         String microprocesador = JOptionPane.showInputDialog("Ingrese el microprocesador del equipo:");
         while(microprocesador.isEmpty()) {
             JOptionPane optionPane = new JOptionPane("Microprocesador no válido", JOptionPane.ERROR_MESSAGE);    
@@ -29,6 +43,7 @@ public class RegistrarEquipos {
             dialog.setVisible(true);
             microprocesador = JOptionPane.showInputDialog("Ingrese el microprocesador del equipo:");
         }
+
         switch (tipo) {
             case 1:
                 String memoriaDesktopString = JOptionPane.showInputDialog("Ingrese la memoria del equipo:");
@@ -41,6 +56,13 @@ public class RegistrarEquipos {
                 }
                 int memoriaDesktop = Integer.parseInt(memoriaDesktopString);
                 String tarjetaGraficaDesktop = JOptionPane.showInputDialog("Ingrese la tarjeta gráfica del equipo:");
+                while(tarjetaGraficaDesktop.isEmpty()) {
+                    JOptionPane optionPane = new JOptionPane("Tarjeta gráfica del Equipo no válido", JOptionPane.ERROR_MESSAGE);    
+                    JDialog dialog = optionPane.createDialog("Failure");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    tarjetaGraficaDesktop = JOptionPane.showInputDialog("Ingrese la tarjeta gráfica del equipo:");
+                }
                 String tamanoTorreDesktop = JOptionPane.showInputDialog("Ingrese el tamaño de torre del equipo:");
                 while(tamanoTorreDesktop.isEmpty()) {
                     JOptionPane optionPane = new JOptionPane("Tamaño de la torre del Equipo no válido", JOptionPane.ERROR_MESSAGE);    
@@ -60,6 +82,7 @@ public class RegistrarEquipos {
                 int capacidadDiscoDesktop = Integer.parseInt(capacidadDiscoDesktopString);
                 computadores.add(new Desktop(fabricante, modelo, microprocesador, memoriaDesktop, tarjetaGraficaDesktop, tamanoTorreDesktop, capacidadDiscoDesktop));
                 break;
+
             case 2:
                 String memoriaLaptopString = JOptionPane.showInputDialog("Ingrese la memoria del equipo:");
                 while(memoriaLaptopString.isEmpty() || !isNumeric(memoriaLaptopString)) {
@@ -90,7 +113,7 @@ public class RegistrarEquipos {
                 int capacidadDiscoLaptop = Integer.parseInt(capacidadDiscoLaptopString);
                 computadores.add(new Laptop(fabricante, modelo, microprocesador, memoriaLaptop, tamanoPantallaLaptop, capacidadDiscoLaptop));
                 break;
-                
+
             case 3:
                 String tamanoDiagonalPantallaTabletString = JOptionPane.showInputDialog("Ingrese el tamaño diagonal de pantalla del equipo:");
                 while(tamanoDiagonalPantallaTabletString.isEmpty() || !isNumeric(tamanoDiagonalPantallaTabletString)) {
@@ -101,10 +124,22 @@ public class RegistrarEquipos {
                     tamanoDiagonalPantallaTabletString = JOptionPane.showInputDialog("Ingrese el tamaño diagonal de pantalla del equipo:");
                 }
                 double tamanoDiagonalPantallaTablet = Double.parseDouble(tamanoDiagonalPantallaTabletString);
-                String capacitivaResistiva; // True si el usuario selecciona "Capacitiva", false si selecciona "Resistiva"
+                String capacitivaResistiva = ""; // True si el usuario selecciona "Capacitiva", false si selecciona "Resistiva"
                 int opcionPantalla = JOptionPane.showOptionDialog(null, "Seleccione el tipo de pantalla:", "Tipo de Pantalla", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new String[]{"Capacitiva", "Resistiva"}, "Capacitiva");
-                boolean capacitivaResistiva = opcionPantalla == 0; // True si el usuario selecciona "Capacitiva", false si selecciona "Resistiva"
-                int tamanoMemoriaNANDTablet = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño de memoria NAND del equipo:"));
+                if(opcionPantalla == 0) {
+                    capacitivaResistiva = "Capacitiva";
+                } else {
+                    capacitivaResistiva = "Resistiva";
+                }
+                String tamanoMemoriaNANDTabletString = JOptionPane.showInputDialog("Ingrese el tamaño de memoria NAND del equipo:");
+                while(tamanoMemoriaNANDTabletString.isEmpty()|| !isNumeric(tamanoMemoriaNANDTabletString)) {
+                    JOptionPane optionPane = new JOptionPane("Tamaño de memoria NAND no válido", JOptionPane.ERROR_MESSAGE);    
+                    JDialog dialog = optionPane.createDialog("Failure");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    tamanoMemoriaNANDTabletString = JOptionPane.showInputDialog("Ingrese el tamaño de memoria NAND del equipo:");
+                }
+                int tamanoMemoriaNANDTablet = Integer.parseInt(tamanoMemoriaNANDTabletString);
                 String sOTablet = JOptionPane.showInputDialog("Ingrese el sistema operativo del equipo:");
                 while(sOTablet.isEmpty()) {
                     JOptionPane optionPane = new JOptionPane("Sistema Operativo no válido", JOptionPane.ERROR_MESSAGE);    
@@ -118,6 +153,20 @@ public class RegistrarEquipos {
             default:
                 break;
         }
+    }
+
+    public static boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Double.parseDouble(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
     }
     
     public void verEquipos(int tipo) {
@@ -151,49 +200,6 @@ public class RegistrarEquipos {
         } else if (tipo == 2) { // Ver Tablets
             sb.append("Tablets Registrados:\n");
             for (Computador computador : computadores) {
-                if (computador instanceof Tablet) {
-                    sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
-                    sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Opción no válida.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        JOptionPane.showMessageDialog(null, sb.toString(), "Equipos Registrados", JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    public static boolean isNumeric(String cadena) {
-
-        if (tipo == 1) { // Ver Computadores
-            int tipoComputador = Integer.parseInt(JOptionPane.showInputDialog("Seleccione el tipo de Computador que desea ver:\n1. Desktops\n2. Laptops"));
-            if (tipoComputador == 1) { // Desktops
-                sb.append("Desktops Registrados:\n");
-                for (Computador computador : computador) {
-                    if (computador instanceof Desktop) {
-                        sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
-                        sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                        sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
-                    }
-                }
-            } else if (tipoComputador == 2) { // Laptops
-                sb.append("Laptops Registrados:\n");
-                for (Computador computador : computador) {
-                    if (computador instanceof Laptop) {
-                        sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
-                        sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                        sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
-                    }
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Opción no válida.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        } else if (tipo == 2) { // Ver Tablets
-            sb.append("Tablets Registrados:\n");
-            for (Computador computador : computador) {
                 if (computador instanceof Tablet) {
                     sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
                     sb.append("Modelo: ").append(computador.getModelo()).append("\n");
