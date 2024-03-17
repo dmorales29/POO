@@ -7,8 +7,9 @@ package foro.pkg2;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import foro.pkg2.Computador;
+import javax.swing.JDialog;
 
 /**
  *
@@ -42,6 +43,7 @@ public class RegistrarEquipos {
             dialog.setVisible(true);
             microprocesador = JOptionPane.showInputDialog("Ingrese el microprocesador del equipo:");
         }
+
         switch (tipo) {
             case 1:
                 String memoriaDesktopString = JOptionPane.showInputDialog("Ingrese la memoria del equipo:");
@@ -80,6 +82,7 @@ public class RegistrarEquipos {
                 int capacidadDiscoDesktop = Integer.parseInt(capacidadDiscoDesktopString);
                 computadores.add(new Desktop(fabricante, modelo, microprocesador, memoriaDesktop, tarjetaGraficaDesktop, tamanoTorreDesktop, capacidadDiscoDesktop));
                 break;
+
             case 2:
                 String memoriaLaptopString = JOptionPane.showInputDialog("Ingrese la memoria del equipo:");
                 while(memoriaLaptopString.isEmpty() || !isNumeric(memoriaLaptopString)) {
@@ -110,7 +113,7 @@ public class RegistrarEquipos {
                 int capacidadDiscoLaptop = Integer.parseInt(capacidadDiscoLaptopString);
                 computadores.add(new Laptop(fabricante, modelo, microprocesador, memoriaLaptop, tamanoPantallaLaptop, capacidadDiscoLaptop));
                 break;
-                
+
             case 3:
                 String tamanoDiagonalPantallaTabletString = JOptionPane.showInputDialog("Ingrese el tamaño diagonal de pantalla del equipo:");
                 while(tamanoDiagonalPantallaTabletString.isEmpty() || !isNumeric(tamanoDiagonalPantallaTabletString)) {
@@ -121,7 +124,7 @@ public class RegistrarEquipos {
                     tamanoDiagonalPantallaTabletString = JOptionPane.showInputDialog("Ingrese el tamaño diagonal de pantalla del equipo:");
                 }
                 double tamanoDiagonalPantallaTablet = Double.parseDouble(tamanoDiagonalPantallaTabletString);
-                String capacitivaResistiva; // True si el usuario selecciona "Capacitiva", false si selecciona "Resistiva"
+                String capacitivaResistiva = ""; // True si el usuario selecciona "Capacitiva", false si selecciona "Resistiva"
                 int opcionPantalla = JOptionPane.showOptionDialog(null, "Seleccione el tipo de pantalla:", "Tipo de Pantalla", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new String[]{"Capacitiva", "Resistiva"}, "Capacitiva");
                 if(opcionPantalla == 0) {
                     capacitivaResistiva = "Capacitiva";
@@ -150,6 +153,20 @@ public class RegistrarEquipos {
             default:
                 break;
         }
+    }
+
+    public static boolean isNumeric(String cadena) {
+
+        boolean resultado;
+
+        try {
+            Double.parseDouble(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
     }
     
     public void verEquipos(int tipo) {
@@ -195,19 +212,5 @@ public class RegistrarEquipos {
         }
 
         JOptionPane.showMessageDialog(null, sb.toString(), "Equipos Registrados", JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    public static boolean isNumeric(String cadena) {
-
-        boolean resultado;
-
-        try {
-            Double.parseDouble(cadena);
-            resultado = true;
-        } catch (NumberFormatException excepcion) {
-            resultado = false;
-        }
-
-        return resultado;
     }
 }
