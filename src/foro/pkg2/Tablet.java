@@ -12,11 +12,11 @@ package foro.pkg2;
 
 public class Tablet extends Computador {
     private double tamanoDiagonalPantalla;
-    private boolean capacitivaResistiva;
+    private String capacitivaResistiva;
     private int tamanoMemoriaNAND;
     private String sO;
     
-    public Tablet (String fabricante, String modelo, String microprocesador, double tamanoDiagonalPantalla, boolean capacitivaResistiva, int tamanoMemoriaNAND, String sO) {
+    public Tablet (String fabricante, String modelo, String microprocesador, double tamanoDiagonalPantalla, String capacitivaResistiva, int tamanoMemoriaNAND, String sO) {
         super(fabricante, modelo, microprocesador);
         this.tamanoDiagonalPantalla = tamanoDiagonalPantalla;
         this.capacitivaResistiva = capacitivaResistiva;

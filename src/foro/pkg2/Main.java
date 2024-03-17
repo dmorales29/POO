@@ -4,16 +4,19 @@
  * and open the template in the editor.
  */
 package foro.pkg2;
+
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;/**
+import javax.swing.JOptionPane;
+
+/**
  *
  * @author david
  */
+
 public class Main {
     public static void main(String[] args) {
         RegistrarEquipos registro = new RegistrarEquipos();
-        List<Computador> computadores = new ArrayList<>();
         int opcion;
         
         do {
@@ -33,9 +36,8 @@ public class Main {
                     break;
                 case 2:
                     int tipoVerEquipo = Integer.parseInt(JOptionPane.showInputDialog("Seleccione el tipo de equipos a ver:\n" +
-                            "1. Desktops\n" +
-                            "2. Laptops\n" +
-                            "3. Tablets"));
+                            "1. Computadoras\n" +
+                            "2. Tablets\n"));
                     registro.verEquipos(tipoVerEquipo);
                     break;
                 case 3:
@@ -46,15 +48,5 @@ public class Main {
                     break;
             }
         } while (opcion != 3);
-        
-        
-        // Ejemplo de registro de un equipo Desktop (Tipo 1)
-        //registroEquipos.registrarEquipo(1);
-        
-        // Ejemplo de registro de un equipo Laptop (Tipo 2)
-       //registroEquipos.registrarEquipo(2);
-        
-        // Ejemplo de registro de un equipo Tablet (Tipo 3)
-        //registroEquipos.registrarEquipo(3);
     }
 }
