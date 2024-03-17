@@ -64,11 +64,11 @@ class Laptop extends Computador {
 
 class Tablet extends Computador {
     private final double tamanoDiagonalPantalla;
-    private final boolean capacitivaResistiva;
+    private final String capacitivaResistiva;
     private final int tamanoMemoriaNAND;
     private final String sO;
     
-    public Tablet (String fabricante, String modelo, String microprocesador, double tamanoDiagonalPantalla, boolean capacitivaResistiva, int tamanoMemoriaNAND, String sO) {
+    public Tablet (String fabricante, String modelo, String microprocesador, double tamanoDiagonalPantalla, String capacitivaResistiva, int tamanoMemoriaNAND, String sO) {
         super(fabricante, modelo, microprocesador);
         this.tamanoDiagonalPantalla = tamanoDiagonalPantalla;
         this.capacitivaResistiva = capacitivaResistiva;
