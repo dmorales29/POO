@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author david
  */
 public class RegistrarEquipos {
-    private List<Computador> computador = new ArrayList<>();
+    List<Computador> computador = new ArrayList<>();
     
     public void registrarEquipo(int tipo) {
         String fabricante = JOptionPane.showInputDialog("Ingrese el fabricante del equipo:");
