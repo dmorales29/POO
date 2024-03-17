@@ -4,82 +4,49 @@
  * and open the template in the editor.
  */
 package foro.pkg2;
-
-/**
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;/**
  *
  * @author david
  */
-
-class Computador {
-    protected String fabricante;
-    protected String modelo;
-    protected String microprocesador;
-    
-    public Computador (String fabricante, String modelo, String microprocesador) {
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.microprocesador = microprocesador;
-    };
-    
-    public String getFabricante () {
-        return fabricante;
-    };
-    
-    public String getModelo () {
-        return modelo;
-    };
-    
-    public String getMicroprocesador () {
-        return microprocesador;
-    };
-}
-
-class Desktop extends Computador {
-    private final int memoria;
-    private final String tarjetaGrafica;
-    private final String tamanoTorre;
-    private final int capacidadDisco;
-    
-    public Desktop (String fabricante, String modelo, String microprocesador, int memoria, String tarjetaGrafica, String tamanoTorre, int capacidadDisco) {
-        super(fabricante, modelo, microprocesador);
-        this.memoria = memoria;
-        this.tarjetaGrafica = tarjetaGrafica;
-        this.tamanoTorre = tamanoTorre;
-        this.capacidadDisco = capacidadDisco;
-    }
-};
-
-class Laptop extends Computador {
-    private final int memoria;
-    private final double tamanoPantalla;
-    private final int capacidadDisco;
-    
-    public Laptop (String fabricante, String modelo, String microprocesador, int memoria, double tamanoPantalla, int capacidadDisco) {
-        super(fabricante, modelo, microprocesador);
-        this.memoria = memoria;
-        this.tamanoPantalla = tamanoPantalla;
-        this.capacidadDisco = capacidadDisco;
-    };
-};
-
-class Tablet extends Computador {
-    private final double tamanoDiagonalPantalla;
-    private final String capacitivaResistiva;
-    private final int tamanoMemoriaNAND;
-    private final String sO;
-    
-    public Tablet (String fabricante, String modelo, String microprocesador, double tamanoDiagonalPantalla, String capacitivaResistiva, int tamanoMemoriaNAND, String sO) {
-        super(fabricante, modelo, microprocesador);
-        this.tamanoDiagonalPantalla = tamanoDiagonalPantalla;
-        this.capacitivaResistiva = capacitivaResistiva;
-        this.tamanoMemoriaNAND = tamanoMemoriaNAND;
-        this.sO = sO;
-    };
-}
-
 public class Main {
     public static void main(String[] args) {
-        RegistrarEquipos registroEquipos = new RegistrarEquipos();
+        RegistrarEquipos registro = new RegistrarEquipos();
+        List<Computador> computadores = new ArrayList<>();
+        int opcion;
+        
+        do {
+            
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("Menú\n" +
+                    "1. Registrar equipo\n" +
+                    "2. Ver equipos\n" +
+                    "3. Salir\n" +
+                    "Seleccione una opción:"));
+            switch (opcion) {
+                case 1:
+                    int tipoEquipo = Integer.parseInt(JOptionPane.showInputDialog("Seleccione el tipo de equipo:\n" +
+                            "1. Desktop\n" +
+                            "2. Laptop\n" +
+                            "3. Tablet"));
+                    registro.registrarEquipo(tipoEquipo);
+                    break;
+                case 2:
+                    int tipoVerEquipo = Integer.parseInt(JOptionPane.showInputDialog("Seleccione el tipo de equipos a ver:\n" +
+                            "1. Desktops\n" +
+                            "2. Laptops\n" +
+                            "3. Tablets"));
+                    registro.verEquipos(tipoVerEquipo);
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción inválida, seleccione nuevamente.");
+                    break;
+            }
+        } while (opcion != 3);
+        
         
         // Ejemplo de registro de un equipo Desktop (Tipo 1)
         //registroEquipos.registrarEquipo(1);
@@ -88,6 +55,6 @@ public class Main {
        //registroEquipos.registrarEquipo(2);
         
         // Ejemplo de registro de un equipo Tablet (Tipo 3)
-        registroEquipos.registrarEquipo(3);
+        //registroEquipos.registrarEquipo(3);
     }
 }
