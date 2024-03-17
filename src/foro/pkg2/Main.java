@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
         RegistrarEquipos registro = new RegistrarEquipos();
-        List<Computador> computadores = new ArrayList<>();
         int opcion;
         
         do {
