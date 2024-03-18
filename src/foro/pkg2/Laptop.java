@@ -19,6 +19,17 @@ public class Laptop extends Computador {
         this.memoria = memoria;
         this.tamanoPantalla = tamanoPantalla;
         this.capacidadDisco = capacidadDisco;
-    };
-};    
-
+    }
+    
+    public int getMemoria () {
+        return memoria;
+    }
+    
+    public double getTamanoPantalla () {
+        return tamanoPantalla;
+    }
+    
+    public int getCapacidadDisco () {
+        return capacidadDisco;
+    }
+}

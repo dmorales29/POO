@@ -22,5 +22,21 @@ public class Tablet extends Computador {
         this.capacitivaResistiva = capacitivaResistiva;
         this.tamanoMemoriaNAND = tamanoMemoriaNAND;
         this.sO = sO;
-    };
+    }
+    
+    public double getTamanoDiagonalPantalla () {
+        return tamanoDiagonalPantalla;
+    }
+    
+    public String getCapacitivaResistiva () {
+        return capacitivaResistiva;
+    }
+    
+    public int getTamanoMemoriaNAND () {
+        return tamanoMemoriaNAND;
+    }
+    
+    public String getSO () {
+        return sO;
+    }
 }

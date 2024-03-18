@@ -173,29 +173,43 @@ public class RegistrarEquipos {
         
         if (tipo == 1) { // Ver Desktops
             sb.append("Desktops registradas:\n");
+            
             for (Computador computador : computadores) {
                 if (computador instanceof Desktop) {
                     sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
                     sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
+                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n");
+                    sb.append("Memoria: ").append(((Desktop) computador).getMemoria()).append(" GB RAM\n");
+                    sb.append("Tarjeta Gráfica: ").append(((Desktop) computador).getTarjetaGrafica()).append("\n");
+                    sb.append("Tamaño de Torre: ").append(((Desktop) computador).getTamanoTorre()).append("\n");
+                    sb.append("Capacidad de disco duro: ").append(((Desktop) computador).getCapacidadDisco()).append(" GB\n\n");
                 }
             }
         } else if (tipo == 2) { // Ver Laptops
             sb.append("Laptops registradas:\n");
-                for (Computador computador : computadores) {
-                    if (computador instanceof Laptop) {
-                        sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
-                        sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                        sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
-                    }
-                }            
+            
+            for (Computador computador : computadores) {
+                if (computador instanceof Laptop) {
+                    sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
+                    sb.append("Modelo: ").append(computador.getModelo()).append("\n");
+                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n");
+                    sb.append("Memoria: ").append(((Laptop) computador).getMemoria()).append(" GB RAM\n");
+                    sb.append("Tamaño pantalla: ").append(((Laptop) computador).getTamanoPantalla()).append("”\n");
+                    sb.append("Capacidad de disco duro: ").append(((Laptop) computador).getCapacidadDisco()).append(" GB\n\n");
+                }
+            }
         } else if (tipo == 3) { // Ver Tablets
             sb.append("Tablets registradas:\n");
+            
             for (Computador computador : computadores) {
                 if (computador instanceof Tablet) {
                     sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
                     sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
+                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n");
+                    sb.append("Tamaño diagonal de pantalla: ").append(((Tablet) computador).getTamanoDiagonalPantalla()).append("”\n");
+                    sb.append("¿Capacitiva/Resistiva?: ").append(((Tablet) computador).getCapacitivaResistiva()).append("\n");
+                    sb.append("Tamaño memoria NAND: ").append(((Tablet) computador).getTamanoMemoriaNAND()).append(" GB\n");
+                    sb.append("Sistema Operativo: ").append(((Tablet) computador).getSO()).append("\n\n");
                 }
             }
         }

@@ -34,20 +34,38 @@ public class Main {
 
                 switch (opcion) {
                     case 1:
-                        String tipoEquipoInput = JOptionPane.showInputDialog("Seleccione el tipo de equipo:\n" +
+                        boolean registrarEquipos = true;
+                        
+                        while (registrarEquipos) {
+                            String tipoEquipoInput = JOptionPane.showInputDialog("Seleccione el tipo de equipos a registrar:\n" +
                                 "1. Desktops\n" +
                                 "2. Laptops\n" +
                                 "3. Tablets");
-                        if (tipoEquipoInput != null) {
-                            int tipoEquipo = Integer.parseInt(tipoEquipoInput);
-                            registro.registrarEquipo(tipoEquipo);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Saliendo del programa...");
-                            return;
+                            
+                            if (tipoEquipoInput != null && !tipoEquipoInput.trim().isEmpty()) {
+                                try {
+                                    int tipoEquipo = Integer.parseInt(tipoEquipoInput);
+
+                                    if (tipoEquipo >= 1 && tipoEquipo <= 3) {
+                                        registro.registrarEquipo(tipoEquipo);
+                                        registrarEquipos = false; // Salir del bucle interno
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Opción inválida, seleccione nuevamente.");
+                                    }
+                                } catch (NumberFormatException ex) {
+                                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+                                }
+                            } else if (tipoEquipoInput != null && tipoEquipoInput.trim().isEmpty()) {
+                                JOptionPane.showMessageDialog(null, "No ha ingresado ninguna opción.");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+                                return;
+                            }
                         }
                         break;
                     case 2:
                         boolean verEquipos = true;
+                        
                         while (verEquipos) {
                             String tipoVerEquipoInput = JOptionPane.showInputDialog("Seleccione el tipo de equipos a ver:\n" +
                                 "1. Desktops\n" +
@@ -75,14 +93,14 @@ public class Main {
                         }
                         break;
                     case 3:
-                        JOptionPane.showMessageDialog(null, "2Saliendo del programa...");
+                        JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "3Opción inválida, seleccione nuevamente.");
+                        JOptionPane.showMessageDialog(null, "Opción inválida, seleccione nuevamente.");
                         break;
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "4Entrada inválida, por favor ingrese un número válido.");
+                JOptionPane.showMessageDialog(null, "Entrada inválida, por favor ingrese un número válido.");
             }            
         } while (opcion != 3);
     }

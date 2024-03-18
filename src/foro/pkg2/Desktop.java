@@ -10,12 +10,12 @@ package foro.pkg2;
  * @author Jorge LG
  */
 
-    public class Desktop extends Computador {
+public class Desktop extends Computador {
     private int memoria;
     private String tarjetaGrafica;
     private String tamanoTorre;
     private int capacidadDisco;
-    
+
     public Desktop (String fabricante, String modelo, String microprocesador, int memoria, String tarjetaGrafica, String tamanoTorre, int capacidadDisco) {
         super(fabricante, modelo, microprocesador);
         this.memoria = memoria;
@@ -23,6 +23,20 @@ package foro.pkg2;
         this.tamanoTorre = tamanoTorre;
         this.capacidadDisco = capacidadDisco;
     }
-};
 
+    public int getMemoria () {
+        return memoria;
+    }
 
+    public String getTarjetaGrafica () {
+        return tarjetaGrafica;
+    }
+
+    public String getTamanoTorre () {
+        return tamanoTorre;
+    }
+
+    public int getCapacidadDisco () {
+        return capacidadDisco;
+    }
+}
