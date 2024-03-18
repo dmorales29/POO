@@ -8,7 +8,6 @@ package foro.pkg2;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import foro.pkg2.Computador;
 import javax.swing.JDialog;
 
 /**
@@ -171,34 +170,27 @@ public class RegistrarEquipos {
     
     public void verEquipos(int tipo) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Equipos Registrados:\n\n");
-
-        if (tipo == 1) { // Ver Computadores
-            int tipoComputador = Integer.parseInt(JOptionPane.showInputDialog("Seleccione el tipo de Computador que desea ver:\n1. Desktops\n2. Laptops"));
-            if (tipoComputador == 1) { // Desktops
-                sb.append("Desktops Registrados:\n");
-                for (Computador computador : computadores) {
-                    if (computador instanceof Desktop) {
-                        sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
-                        sb.append("Modelo: ").append(computador.getModelo()).append("\n");
-                        sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
-                    }
+        
+        if (tipo == 1) { // Ver Desktops
+            sb.append("Desktops registradas:\n");
+            for (Computador computador : computadores) {
+                if (computador instanceof Desktop) {
+                    sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
+                    sb.append("Modelo: ").append(computador.getModelo()).append("\n");
+                    sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
                 }
-            } else if (tipoComputador == 2) { // Laptops
-                sb.append("Laptops Registrados:\n");
+            }
+        } else if (tipo == 2) { // Ver Laptops
+            sb.append("Laptops registradas:\n");
                 for (Computador computador : computadores) {
                     if (computador instanceof Laptop) {
                         sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
                         sb.append("Modelo: ").append(computador.getModelo()).append("\n");
                         sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
                     }
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Opción no válida.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        } else if (tipo == 2) { // Ver Tablets
-            sb.append("Tablets Registrados:\n");
+                }            
+        } else if (tipo == 3) { // Ver Tablets
+            sb.append("Tablets registradas:\n");
             for (Computador computador : computadores) {
                 if (computador instanceof Tablet) {
                     sb.append("Fabricante: ").append(computador.getFabricante()).append("\n");
@@ -206,11 +198,7 @@ public class RegistrarEquipos {
                     sb.append("Microprocesador: ").append(computador.getMicroprocesador()).append("\n\n");
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Opción no válida.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
         }
-
-        JOptionPane.showMessageDialog(null, sb.toString(), "Equipos Registrados", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, sb.toString());
     }
 }
