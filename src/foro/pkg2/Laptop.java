@@ -32,4 +32,27 @@ public class Laptop extends Computador {
     public int getCapacidadDisco () {
         return capacidadDisco;
     }
+
+    /**
+     * @param memoria the memoria to set
+     */
+    public void setMemoria(int memoria) {
+        this.memoria = memoria;
+    }
+
+    /**
+     * @param tamanoPantalla the tamanoPantalla to set
+     */
+    public void setTamanoPantalla(double tamanoPantalla) {
+        this.tamanoPantalla = tamanoPantalla;
+    }
+
+    /**
+     * @param capacidadDisco the capacidadDisco to set
+     */
+    public void setCapacidadDisco(int capacidadDisco) {
+        this.capacidadDisco = capacidadDisco;
+    }
+    
+    
 }

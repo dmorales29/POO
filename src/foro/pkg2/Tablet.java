@@ -39,4 +39,34 @@ public class Tablet extends Computador {
     public String getSO () {
         return sO;
     }
+
+    /**
+     * @param tamanoDiagonalPantalla the tamanoDiagonalPantalla to set
+     */
+    public void setTamanoDiagonalPantalla(double tamanoDiagonalPantalla) {
+        this.tamanoDiagonalPantalla = tamanoDiagonalPantalla;
+    }
+
+    /**
+     * @param capacitivaResistiva the capacitivaResistiva to set
+     */
+    public void setCapacitivaResistiva(String capacitivaResistiva) {
+        this.capacitivaResistiva = capacitivaResistiva;
+    }
+
+    /**
+     * @param tamanoMemoriaNAND the tamanoMemoriaNAND to set
+     */
+    public void setTamanoMemoriaNAND(int tamanoMemoriaNAND) {
+        this.tamanoMemoriaNAND = tamanoMemoriaNAND;
+    }
+
+    /**
+     * @param sO the sO to set
+     */
+    public void setsO(String sO) {
+        this.sO = sO;
+    }
+    
+    
 }
