@@ -39,4 +39,32 @@ public class Desktop extends Computador {
     public int getCapacidadDisco () {
         return capacidadDisco;
     }
+
+    /**
+     * @param memoria the memoria to set
+     */
+    public void setMemoria(int memoria) {
+        this.memoria = memoria;
+    }
+
+    /**
+     * @param tarjetaGrafica the tarjetaGrafica to set
+     */
+    public void setTarjetaGrafica(String tarjetaGrafica) {
+        this.tarjetaGrafica = tarjetaGrafica;
+    }
+
+    /**
+     * @param tamanoTorre the tamanoTorre to set
+     */
+    public void setTamanoTorre(String tamanoTorre) {
+        this.tamanoTorre = tamanoTorre;
+    }
+
+    /**
+     * @param capacidadDisco the capacidadDisco to set
+     */
+    public void setCapacidadDisco(int capacidadDisco) {
+        this.capacidadDisco = capacidadDisco;
+    }
 }
